@@ -163,11 +163,6 @@ Eine WebSocket-Struktur ist bereits vorbereitet, um zukünftig echte Echtzeit-Up
 
 ---
 
-## Screenshots
-
-*(Hier können später Screenshots des Dashboards, der Karte und der Tabelle ergänzt werden.)*
-
----
 
 ## Fazit
 
