@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    container_name: fleet-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: fleet_monitor
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: 
+      context: ./backend
+    container_name: fleet-api
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: fleet_monitor
+
+    ports:
+      - "4000:4000"
+
+volumes:
+  postgres_data:
